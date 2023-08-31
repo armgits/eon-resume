@@ -1,0 +1,5 @@
+# Untrack auxiliary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz

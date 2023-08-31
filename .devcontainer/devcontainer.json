@@ -1,0 +1,17 @@
+{
+	"dockerFile": "Dockerfile",
+	"workspaceMount": "source=${localEnv:HOME}/resume,target=/home/latex-workspace/resume,type=bind",
+	"workspaceFolder": "/home/latex-workspace/resume",
+	"runArgs": [
+		"--network=host",
+		"--ipc=host"
+	],
+	// Set *default* container specific settings.json values on container create.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"James-Yu.latex-workshop"
+			]
+		}
+	}
+}
