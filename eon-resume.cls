@@ -8,7 +8,8 @@
 \RequirePackage{tabularx}
 \RequirePackage[parfill]{parskip}
 
-\geometry{
+\geometry
+{
   a4paper,
   left=0.1cm,
   right=0.1cm,
@@ -21,30 +22,58 @@
 \let \emailaddress \relax
 \let \websiteurl \relax
 
-\newcommand{\name}[2]{
-  \def \personname {{\bf#1} #2}
+\newcommand{\name}[2]
+{
+  \def \personname {\lowercase{{\bf#1} #2}}
 }
 
-\newcommand{\academiclvl}[2]{
-  \def \academiclevel {#1 in {\bf#2}}
+\newcommand{\academiclvl}[2]
+{
+  \def \academiclevel {\lowercase{#1 in {\bf#2}}}
 }
 
-\newcommand{\email}[1]{
+\newcommand{\email}[1]
+{
   \def \emailaddress {#1}
 }
 
-\newcommand{\website}[1]{
+\newcommand{\website}[1]
+{
   \def \websiteurl {#1}
 }
 
-\newcommand{\printinfo}{
+\newcommand{\printheader}
+{
   \begin{center}
-  \begin{tabularx}{\textwidth} {
-    >{\raggedright\arraybackslash}X 
-    >{\raggedleft\arraybackslash}X
+  \begin{tabularx}{\hsize}
+  % layout formatting
+  {
+    @{}>{\raggedright\arraybackslash}X  % column 1 format
+    >{\raggedleft\arraybackslash}X@{} % column 2 format
   }
-    \huge\personname & \Large\emailaddress \\
-    \Large\academiclevel & \Large\websiteurl
+
+  % table content
+  \huge\personname & \Large\emailaddress \\
+  \Large\academiclevel & \Large\websiteurl
   \end{tabularx}
   \end{center}
+}
+
+\let\ori@document=\document % Store the original \document command
+\renewcommand{\document}
+{
+	\ori@document  % Output the original \document command but add to it below
+	\printheader % Output the user's name
+}
+
+\renewenvironment{section}[1]
+% \begin{section} definition
+{
+  \smallskip
+  \lowercase{\LARGE{\bf{#1}}}
+  \begin{list}{}{\setlength{\leftmargin}{0pt}}
+}
+% \end{section} definition
+{
+  \end{list}
 }
