@@ -3,7 +3,8 @@
 
 \LoadClass{article}
 
-\RequirePackage{ragged2e}
+% \RequirePackage{ragged2e}
+\RequirePackage{etoolbox}
 \RequirePackage{geometry}
 \RequirePackage{tabularx}
 \RequirePackage[parfill]{parskip}
@@ -45,13 +46,12 @@
 \newcommand{\printheader}
 {
   \begin{center}
-  \begin{tabularx}{\hsize}
+  \begin{tabularx}{\hsize}  %[1]
   % layout formatting
   {
     @{}>{\raggedright\arraybackslash}X  % column 1 format
     >{\raggedleft\arraybackslash}X@{} % column 2 format
   }
-
   % table content
   \huge\personname & \Large\emailaddress \\
   \Large\academiclevel & \Large\websiteurl
@@ -59,21 +59,67 @@
   \end{center}
 }
 
+%  Prints the header [3]
 \let\ori@document=\document % Store the original \document command
 \renewcommand{\document}
 {
 	\ori@document  % Output the original \document command but add to it below
-	\printheader % Output the user's name
+	\printheader % Output the header
+}
+
+% Helper function to create title/school and year in two tabular columns
+\newcommand{\contenttable}[2]
+{
+  \begin{center}
+  \begin{tabularx}{\hsize}  %[1][2]
+  % layout formatting
+  {
+    @{}>{\raggedright\arraybackslash\hsize=1.5\hsize\linewidth=\hsize}X  % column 1 format
+    >{\raggedleft\arraybackslash\hsize=.5\hsize\linewidth=\hsize}X@{} % column 2 format
+  }
+  % table content
+  \normalsize{#1} & \normalsize{#2}
+  \end{tabularx}
+  \end{center}
+}
+
+\newcommand{\skills}[2]
+{
+  \begin{tabularx}{0.75\hsize}  %[1][2]
+  % layout formatting
+  {
+    @{}>{\hsize=.5\hsize\linewidth=\hsize}X  % column 1 format
+    >{\hsize=1.5\hsize\linewidth=\hsize}X % column 2 format
+  }
+    \normalsize{#1} & \normalsize{#2}
+  \end{tabularx}
 }
 
 \renewenvironment{section}[1]
-% \begin{section} definition
 {
-  \smallskip
-  \lowercase{\LARGE{\bf{#1}}}
-  \begin{list}{}{\setlength{\leftmargin}{0pt}}
+  \lowercase{\Large{\bf{#1}}}
+}{}
+
+\newenvironment{school}[3]
+{
+  \contenttable{#1 at #2}{#3}
+  \begin{list}{}{\setlength{\leftmargin}{0pt}\normalsize}
 }
-% \end{section} definition
 {
   \end{list}
 }
+
+\newenvironment{work}[3]
+{
+  \contenttable{#1 at #2}{#3}
+  \begin{list}{$\cdot$}{\setlength{\leftmargin}{8pt}\normalsize}
+}
+{
+  \end{list}
+}
+
+% References
+% 1. Section "Tables with a fixed width" from https://www.overleaf.com/learn/latex/Tables
+% 2. Section 4.3 from https://texdoc.org/serve/tabularx.pdf/0
+% 3. Code from this template http://www.latextemplates.com/template/medium-length-professional-cv
+
