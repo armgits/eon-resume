@@ -109,9 +109,18 @@
   \end{list}
 }
 
-\newenvironment{work}[3]
+\newenvironment{work}[4]
 {
-  \contenttable{#1 at #2}{#3}
+  \contenttable{\ifblank{#3}{#1 at #2}{#1 at #2, #3}}{#4}
+  \begin{list}{$\cdot$}{\setlength{\leftmargin}{8pt}\normalsize}
+}
+{
+  \end{list}
+}
+
+\newenvironment{project}[3]
+{
+  \contenttable{\ifblank{#2}{#1}{#1 as #2}}{#3}   %[4]
   \begin{list}{$\cdot$}{\setlength{\leftmargin}{8pt}\normalsize}
 }
 {
@@ -122,4 +131,4 @@
 % 1. Section "Tables with a fixed width" from https://www.overleaf.com/learn/latex/Tables
 % 2. Section 4.3 from https://texdoc.org/serve/tabularx.pdf/0
 % 3. Code from this template http://www.latextemplates.com/template/medium-length-professional-cv
-
+% 4. Section 3.6.3 from http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/etoolbox/etoolbox.pdf
