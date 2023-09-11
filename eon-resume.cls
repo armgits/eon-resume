@@ -9,20 +9,19 @@
 % ------------------------------------------------------------------------------
 % Class Identification
 % ------------------------------------------------------------------------------
-% !TeX program = xelatex
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eon-resume}[2023/09/06 v0.7.0 A modern-looking tech resume]
+\ProvidesClass{eon-resume}[2023/09/07 v0.8.0 A modern-looking tech resume]
 
 % ------------------------------------------------------------------------------
 % Base Class + Packages
 % ------------------------------------------------------------------------------
-\LoadClass {article}
+\LoadClass{article}
 
 \RequirePackage{etoolbox}
 \RequirePackage{geometry}
 \RequirePackage{tabularx}
 \RequirePackage[parfill]{parskip}
-% \RequirePackage{fontspec}
+\RequirePackage{fontspec}
 
 % ------------------------------------------------------------------------------
 % Design Rules and Document Style
@@ -30,20 +29,20 @@
 \geometry
 {
   a4paper,
-  left = 0.1cm,
-  right = 0.1cm,
-  top = 0.1cm,
-  bottom = 0.1cm
+  left = 1.27cm,
+  right = 1.27cm,
+  top = 1.27cm,
+  bottom = 1.27cm
 }
 
-% \setmainfont{Brygada1918}[
-%   Path=./BrygadaFontFiles/,
-%   Extension = .ttf,
-%   UprightFont=*-Regular,
-%   BoldFont=*-Bold,
-%   ItalicFont=*-Italic,
-%   BoldItalicFont=*-BoldItalic
-%   ]
+\setmainfont{D-DIN}
+[
+  Path = ./font/d-din/,
+  Extension = .otf,
+  UprightFont = D-DIN,
+  BoldFont = D-DIN-Bold,
+  ItalicFont = D-DIN-Italic
+]
 
 % ------------------------------------------------------------------------------
 % Resume Header
@@ -52,6 +51,8 @@
 \let \academiclevel \relax
 \let \emailaddress \relax
 \let \websiteurl \relax
+
+\setlength{\parskip}{12pt}
 
 \newcommand{\name}[2]
 {
@@ -75,6 +76,8 @@
 
 \newcommand{\printheader}
 {
+  \begingroup
+  \renewcommand{\arraystretch}{1.5}
   \begin{center}
   \begin{tabularx}{\hsize}
   % layout (auto column-width)  [1]
@@ -87,6 +90,7 @@
   \Large\academiclevel & \Large\websiteurl
   \end{tabularx}
   \end{center}
+  \endgroup
 }
 
 %  Prints the header [3]
@@ -128,7 +132,8 @@
 % ------------------------------------------------------------------------------
 \newenvironment{school} [3]
 {
-  \contenttable {#1 at #2}{#3}
+  \setlength{\parskip}{0pt}
+  \contenttable{#1 at #2}{#3}
   \begin{list}{}{\setlength{\leftmargin}{0pt}\normalsize}
 }
 {
@@ -137,6 +142,8 @@
 
 \newcommand{\skills}[2]
 {
+  \begingroup
+  \setlength{\parskip}{0pt}
   \begin{tabularx}{0.75\hsize}  %[1][2]
     % layout (25-75 column width distribution)
     {
@@ -146,12 +153,21 @@
     % table content
     \normalsize{#1} & \normalsize{#2}
   \end{tabularx}
+  \endgroup
 }
 
 \newenvironment{work}[4]
 {
+  \setlength{\parskip}{0pt}
   \contenttable{\ifblank{#3}{#1 at #2}{#1 at #2, #3}}{#4}   %[4]
-  \begin{list}{$\cdot$}{\setlength{\leftmargin}{8pt}\normalsize}
+  \begin{list}{$\cdot$}
+  {
+    \setlength{\parskip}{0pt}
+    \setlength{\leftmargin}{8pt}
+    \normalsize
+    \setlength{\topsep}{2pt}
+    \setlength{\parsep}{1pt}
+  }
 }
 {
   \end{list}
@@ -160,7 +176,12 @@
 \newenvironment{project}[3]
 {
   \contenttable{\ifblank{#2}{#1}{#1 as #2}}{#3}   %[4]
-  \begin{list}{$\cdot$}{\setlength{\leftmargin}{8pt}\normalsize}
+  \begin{list}{$\cdot$}
+  {
+    \setlength{\leftmargin}{8pt}
+    \normalsize
+    \setlength{\parsep}{1pt}
+  }
 }
 {
   \end{list}
