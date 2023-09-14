@@ -15,6 +15,8 @@
 % ------------------------------------------------------------------------------
 % Base Class + Packages
 % ------------------------------------------------------------------------------
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
 \LoadClass{article}
 
 \RequirePackage{etoolbox}
@@ -52,7 +54,7 @@
 \let \emailaddress \relax
 \let \websiteurl \relax
 
-\setlength{\parskip}{12pt}
+\setlength{\parskip}{8pt}
 
 \newcommand{\name}[2]
 {
@@ -77,7 +79,7 @@
 \newcommand{\printheader}
 {
   \begingroup
-  \renewcommand{\arraystretch}{1.5}
+  \renewcommand{\arraystretch}{1.25}
   \begin{center}
   \begin{tabularx}{\hsize}
   % layout (auto column-width)  [1]
@@ -91,6 +93,7 @@
   \end{tabularx}
   \end{center}
   \endgroup
+  \smallskip
 }
 
 %  Prints the header [3]
@@ -114,7 +117,7 @@
     >{\raggedleft\arraybackslash\hsize=.5\hsize\linewidth=\hsize}X@{} % column 2
   }
   % table content
-  \normalsize{#1} & \normalsize{#2}
+  \normalsize{#1} & \small{#2}
   \end{tabularx}
   \end{center}
 }
@@ -144,7 +147,7 @@
 {
   \begingroup
   \setlength{\parskip}{0pt}
-  \begin{tabularx}{0.75\hsize}  %[1][2]
+  \begin{tabularx}{0.99\hsize}  %[1][2]
     % layout (25-75 column width distribution)
     {
       @{}>{\hsize=.5\hsize\linewidth=\hsize}X  % column 1
@@ -175,11 +178,14 @@
 
 \newenvironment{project}[3]
 {
+  \setlength{\parskip}{0pt}
   \contenttable{\ifblank{#2}{#1}{#1 as #2}}{#3}   %[4]
   \begin{list}{$\cdot$}
   {
+    \setlength{\parskip}{0pt}
     \setlength{\leftmargin}{8pt}
     \normalsize
+    \setlength{\topsep}{2pt}
     \setlength{\parsep}{1pt}
   }
 }
