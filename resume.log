@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Alpine Linux) (preloaded format=xelatex 2023.9.6)  14 SEP 2023 18:58
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Alpine Linux) (preloaded format=xelatex 2023.9.6)  15 SEP 2023 21:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -256,12 +256,7 @@ Underfull \hbox (badness 10000) in alignment at lines 15--15
 [][] 
  []
 
-) (./sections/skills.tex
-Overfull \hbox (26.83371pt too wide) in paragraph at lines 3--6
-[]  
- []
-
-) (./sections/experience.tex
+) (./sections/skills.tex) (./sections/experience.tex
 Underfull \hbox (badness 10000) in alignment at lines 7--7
 [][] 
  []
@@ -298,9 +293,9 @@ Here is how much of TeX's memory you used:
  4552 strings out of 476683
  124026 string characters out of 5809780
  1861018 words of memory out of 5000000
- 24764 multiletter control sequences out of 15000+600000
+ 24763 multiletter control sequences out of 15000+600000
  516067 words of font info for 60 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 87i,9n,91p,575b,338s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,8n,91p,575b,342s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on resume.xdv (1 page, 25840 bytes).
+Output written on resume.xdv (1 page, 25812 bytes).

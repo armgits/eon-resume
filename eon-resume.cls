@@ -46,6 +46,8 @@
   ItalicFont = D-DIN-Italic
 ]
 
+\thispagestyle{empty}
+
 % ------------------------------------------------------------------------------
 % Resume Header
 % ------------------------------------------------------------------------------
@@ -54,7 +56,7 @@
 \let \emailaddress \relax
 \let \websiteurl \relax
 
-\setlength{\parskip}{8pt}
+\setlength{\parskip}{6pt}
 
 \newcommand{\name}[2]
 {
@@ -93,7 +95,7 @@
   \end{tabularx}
   \end{center}
   \endgroup
-  \smallskip
+  \bigskip
 }
 
 %  Prints the header [3]
@@ -137,26 +139,17 @@
 {
   \setlength{\parskip}{0pt}
   \contenttable{#1 at #2}{#3}
-  \begin{list}{}{\setlength{\leftmargin}{0pt}\normalsize}
+  \begin{list}{}
+  {
+    \setlength{\parskip}{0pt}
+    \setlength{\leftmargin}{0pt}
+    \normalsize
+    \setlength{\topsep}{4pt}
+    \setlength{\parsep}{2pt}
+  }
 }
 {
   \end{list}
-}
-
-\newcommand{\skills}[2]
-{
-  \begingroup
-  \setlength{\parskip}{0pt}
-  \begin{tabularx}{0.99\hsize}  %[1][2]
-    % layout (25-75 column width distribution)
-    {
-      @{}>{\hsize=.5\hsize\linewidth=\hsize}X  % column 1
-      >{\hsize=1.5\hsize\linewidth=\hsize}X % column 2
-    }
-    % table content
-    \normalsize{#1} & \normalsize{#2}
-  \end{tabularx}
-  \endgroup
 }
 
 \newenvironment{work}[4]
@@ -166,10 +159,10 @@
   \begin{list}{$\cdot$}
   {
     \setlength{\parskip}{0pt}
-    \setlength{\leftmargin}{8pt}
+    \setlength{\leftmargin}{11pt}
     \normalsize
-    \setlength{\topsep}{2pt}
-    \setlength{\parsep}{1pt}
+    \setlength{\topsep}{4pt}
+    \setlength{\parsep}{2pt}
   }
 }
 {
@@ -183,10 +176,10 @@
   \begin{list}{$\cdot$}
   {
     \setlength{\parskip}{0pt}
-    \setlength{\leftmargin}{8pt}
+    \setlength{\leftmargin}{11pt}
     \normalsize
-    \setlength{\topsep}{2pt}
-    \setlength{\parsep}{1pt}
+    \setlength{\topsep}{4pt}
+    \setlength{\parsep}{2pt}
   }
 }
 {
