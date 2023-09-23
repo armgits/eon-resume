@@ -24,6 +24,7 @@
 \RequirePackage{tabularx}
 \RequirePackage[parfill]{parskip}
 \RequirePackage{fontspec}
+\RequirePackage{xcolor}
 
 % ------------------------------------------------------------------------------
 % Design Rules and Document Style
@@ -46,6 +47,11 @@
   ItalicFont = D-DIN-Italic
 ]
 
+\definecolor{content-black}{HTML}{000000}
+\definecolor{gray-3}{HTML}{414042}
+\definecolor{gray-1}{HTML}{6D6E71}
+\definecolor{gray-2}{HTML}{58595B}
+
 \thispagestyle{empty}
 
 % ------------------------------------------------------------------------------
@@ -60,22 +66,22 @@
 
 \newcommand{\name}[2]
 {
-  \def \personname{\lowercase{{\bf#1} #2}}
+  \def \personname{\lowercase{{\bf#1} \textcolor{gray-1}{#2}}}
 }
 
 \newcommand{\academiclvl}[2]
 {
-  \def \academiclevel{\lowercase{#1 in {\bf#2}}}
+  \def \academiclevel{\lowercase{\textcolor{gray-1}{#1 in} #2}}
 }
 
-\newcommand{\email}[1]
+\newcommand{\email}[2]
 {
-  \def \emailaddress{#1}
+  \def \emailaddress{#1\textcolor{gray-1}{@#2}}
 }
 
-\newcommand{\website}[1]
+\newcommand{\website}[2]
 {
-  \def \websiteurl{#1}
+  \def \websiteurl{\textcolor{gray-1}{#1/}#2}
 }
 
 \newcommand{\printheader}
@@ -119,9 +125,14 @@
     >{\raggedleft\arraybackslash\hsize=.5\hsize\linewidth=\hsize}X@{} % column 2
   }
   % table content
-  \normalsize{#1} & \small{#2}
+  \normalsize{#1} & \small{\textcolor{gray-1}{#2}}
   \end{tabularx}
   \end{center}
+}
+
+\newcommand{\makegraylabel}[1]
+{
+  \textcolor{gray-1}{#1}
 }
 
 % ------------------------------------------------------------------------------
@@ -129,7 +140,7 @@
 % ------------------------------------------------------------------------------
 \renewenvironment{section} [1]
 {
-  \lowercase{\Large{\bf{#1}}}
+  \lowercase{\Large{\bf{\textcolor{gray-2}{#1}}}}
 }{}
 
 % ------------------------------------------------------------------------------
@@ -138,7 +149,7 @@
 \newenvironment{school} [3]
 {
   \setlength{\parskip}{0pt}
-  \contenttable{#1 at #2}{#3}
+  \contenttable{#1 \textcolor{gray-1}{at #2}}{#3}
   \begin{list}{}
   {
     \setlength{\parskip}{0pt}
@@ -146,6 +157,7 @@
     \normalsize
     \setlength{\topsep}{4pt}
     \setlength{\parsep}{2pt}
+    \let\makelabel=\makegraylabel
   }
 }
 {
