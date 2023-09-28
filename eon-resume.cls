@@ -66,22 +66,22 @@
 
 \newcommand{\name}[2]
 {
-  \def \personname{\lowercase{{\bf#1} \textcolor{gray-1}{#2}}}
+  \def \personname{\lowercase{{\bf#1} \textcolor{gray-2}{#2}}}
 }
 
 \newcommand{\academiclvl}[2]
 {
-  \def \academiclevel{\lowercase{\textcolor{gray-1}{#1 in} #2}}
+  \def \academiclevel{\lowercase{\textcolor{gray-2}{#1 in} #2}}
 }
 
 \newcommand{\email}[2]
 {
-  \def \emailaddress{#1\textcolor{gray-1}{@#2}}
+  \def \emailaddress{#1\textcolor{gray-2}{@#2}}
 }
 
 \newcommand{\website}[2]
 {
-  \def \websiteurl{\textcolor{gray-1}{#1/}#2}
+  \def \websiteurl{\textcolor{gray-2}{#1/}#2}
 }
 
 \newcommand{\printheader}
@@ -101,7 +101,7 @@
   \end{tabularx}
   \end{center}
   \endgroup
-  \bigskip
+  \medskip
 }
 
 %  Prints the header [3]
@@ -125,14 +125,26 @@
     >{\raggedleft\arraybackslash\hsize=.5\hsize\linewidth=\hsize}X@{} % column 2
   }
   % table content
-  \normalsize{#1} & \small{\textcolor{gray-1}{#2}}
+  \normalsize{#1} & \small{\textcolor{gray-2}{#2}}
   \end{tabularx}
   \end{center}
 }
 
-\newcommand{\makegraylabel}[1]
+\newcommand{\skill}[2]
 {
-  \textcolor{gray-1}{#1}
+  \setlength{\parskip}{0pt}
+  \begin{center}
+  \begin{tabularx}{\textwidth\normalsize}
+  % table layout
+  { 
+    @{}>{\raggedright\arraybackslash\hsize=.4\hsize\linewidth=\hsize}X
+    >{\raggedright\arraybackslash\hsize=1.6\hsize\linewidth=\hsize}X
+  }
+    % table content
+    #1 & \textcolor{gray-3}{#2}
+  % \smallskip
+  \end{tabularx}
+  \end{center}
 }
 
 % ------------------------------------------------------------------------------
@@ -149,15 +161,32 @@
 \newenvironment{school} [3]
 {
   \setlength{\parskip}{0pt}
-  \contenttable{#1 \textcolor{gray-1}{at #2}}{#3}
+  \contenttable{#1 \textcolor{gray-2}{at #2}}{#3}
   \begin{list}{}
   {
     \setlength{\parskip}{0pt}
     \setlength{\leftmargin}{0pt}
-    \normalsize
     \setlength{\topsep}{4pt}
     \setlength{\parsep}{2pt}
-    \let\makelabel=\makegraylabel
+    \normalsize
+    % \color{gray-3}
+  }
+}
+{
+  \end{list}
+}
+
+\newenvironment{skills}
+{
+  \setlength{\parskip}{0pt}
+  \begin{list}{}
+  {
+    \setlength{\parskip}{0pt}
+    \setlength{\leftmargin}{0pt}
+    \setlength{\topsep}{2pt}
+    \setlength{\parsep}{-3pt}
+    \setlength{\itemsep}{2pt}
+    \normalsize
   }
 }
 {
@@ -167,14 +196,15 @@
 \newenvironment{work}[4]
 {
   \setlength{\parskip}{0pt}
-  \contenttable{\ifblank{#3}{#1 at #2}{#1 at #2, #3}}{#4}   %[4]
-  \begin{list}{$\cdot$}
+  \contenttable{\ifblank{#3}{#1 \textcolor{gray-2}{at #2}}{#1 \textcolor{gray-2}{at #2, #3}}}{#4}   %[4]
+  \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
     \setlength{\leftmargin}{11pt}
-    \normalsize
     \setlength{\topsep}{4pt}
     \setlength{\parsep}{2pt}
+    \normalsize
+    % \color{gray-3}
   }
 }
 {
@@ -184,8 +214,8 @@
 \newenvironment{project}[3]
 {
   \setlength{\parskip}{0pt}
-  \contenttable{\ifblank{#2}{#1}{#1 as #2}}{#3}   %[4]
-  \begin{list}{$\cdot$}
+  \contenttable{\ifblank{#2}{#1}{#1 \textcolor{gray-2}{as #2}}}{#3}   %[4]
+  \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
     \setlength{\leftmargin}{11pt}
