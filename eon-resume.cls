@@ -61,31 +61,56 @@
 \let \academiclevel \relax
 \let \emailaddress \relax
 \let \websiteurl \relax
+\let \phonenumber \relax
 
 \setlength{\parskip}{6pt}
 
+% Parameter #1 - First name
+% Parameter #2 - Last name
 \newcommand{\name}[2]
 {
   \def \personname{\lowercase{{\bf#1} \textcolor{gray-2}{#2}}}
 }
 
+% Parameter #1 - Year of study
+% Parameter #2 - Major
 \newcommand{\academiclvl}[2]
 {
   \def \academiclevel{\lowercase{\textcolor{gray-2}{#1 in} #2}}
 }
 
+% Parameter #1 - Email/Directory ID
+% Parameter #2 - Domain
 \newcommand{\email}[2]
 {
   \def \emailaddress{#1\textcolor{gray-2}{@#2}}
 }
 
+% Parameter #1 - Domain
+% Parameter #2 - Subdirectory and parameters
 \newcommand{\website}[2]
 {
   \def \websiteurl{\textcolor{gray-2}{#1/}#2}
 }
+ 
+% Parameter #1 - Country Code
+% Parameter #2 - Phone Number
+\newcommand{\phone}[2]
+{
+  \def \phonenumber{\textcolor{gray-2}{#1} #2}
+}
 
 \newcommand{\printheader}
 {
+  \let \contactinfo \relax
+  \ifundef{\phonenumber} {
+    % true
+    \def \contactinfo {\websiteurl}
+  } {
+    % false
+    \def \contactinfo {\phonenumber}
+  }
+
   \begingroup
   \renewcommand{\arraystretch}{1.25}
   \begin{center}
@@ -97,7 +122,7 @@
   }
   % table content
   \huge\personname & \Large\emailaddress \\
-  \Large\academiclevel & \Large\websiteurl
+  \Large\academiclevel & \Large\contactinfo
   \end{tabularx}
   \end{center}
   \endgroup
@@ -115,6 +140,9 @@
 % ------------------------------------------------------------------------------
 % Helper Functions
 % ------------------------------------------------------------------------------
+
+% Parameter #1 - Title
+% Parameter #2 - Dates
 \newcommand{\contenttable}[2]
 {
   \begin{center}
@@ -130,6 +158,8 @@
   \end{center}
 }
 
+% Parameter #1 - Skill Category
+% Parameter #2 - Specific Skills
 \newcommand{\skill}[2]
 {
   \setlength{\parskip}{0pt}
@@ -150,7 +180,9 @@
 % ------------------------------------------------------------------------------
 % Section Definition
 % ------------------------------------------------------------------------------
-\renewenvironment{section} [1]
+
+% Parameter #1 - Section Title
+\renewenvironment{section}[1]
 {
   \lowercase{\Large{\bf{\textcolor{gray-2}{#1}}}}
 }{}
@@ -158,6 +190,10 @@
 % ------------------------------------------------------------------------------
 % Sub-Section Definitions
 % ------------------------------------------------------------------------------
+
+% Parameter #1 - Degree and Major
+% Parameter #2 - School/University
+% Parameter #3 - Dates
 \newenvironment{school} [3]
 {
   \setlength{\parskip}{0pt}
@@ -193,10 +229,23 @@
   \end{list}
 }
 
+% Parameter #1 - Title
+% Parameter #2 - Company/Organization
+% Parameter #3 - Location
+% Parameter #4 - Dates
 \newenvironment{work}[4]
 {
+  \let \worktitle \relax
+  \ifblank{#3} {
+    % true
+    \def \worktitle {#1 \textcolor{gray-2}{at #2}}
+  } {
+    % false
+    \def \worktitle {#1 \textcolor{gray-2}{at #2, #3}}
+  }
+  
   \setlength{\parskip}{0pt}
-  \contenttable{\ifblank{#3}{#1 \textcolor{gray-2}{at #2}}{#1 \textcolor{gray-2}{at #2, #3}}}{#4}   %[4]
+  \contenttable{\worktitle}{#4}   %[4]
   \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
@@ -213,8 +262,17 @@
 
 \newenvironment{project}[3]
 {
+  \let \projecttitle \relax
+  \ifblank{#2} {
+    % true
+    \def \projecttitle {#1}
+  } {
+    % false
+    \def \projecttitle {#1 \textcolor{gray-2}{as #2}}
+  }
+
   \setlength{\parskip}{0pt}
-  \contenttable{\ifblank{#2}{#1}{#1 \textcolor{gray-2}{as #2}}}{#3}   %[4]
+  \contenttable{\projecttitle}{#3}   %[4]
   \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
