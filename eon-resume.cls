@@ -1,7 +1,8 @@
 % Eon Resume by Abhishekh Reddy (helloarm@pm.me)
 % 
 % A modern-looking tech resume
-% HUGE Inspiration from: Dheera Venkatraman's resume https://dheera.net/about and Microsoft's Metro UI
+% HUGE Inspiration from: Dheera Venkatraman's resume https://dheera.net/about 
+% and Microsoft's Metro UI
 % 
 % Repository: https://github.com/armgits/eon-resume
 % License and terms of use: TBD
@@ -10,7 +11,7 @@
 % Class Identification
 % ------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eon-resume}[2023/09/07 v0.8.0 A modern-looking tech resume]
+\ProvidesClass{eon-resume}[2023/09/07 v0.9.0 A modern-looking tech resume]
 
 % ------------------------------------------------------------------------------
 % Base Class + Packages
@@ -47,10 +48,9 @@
   ItalicFont = D-DIN-Italic
 ]
 
-\definecolor{content-black}{HTML}{000000}
-\definecolor{gray-3}{HTML}{414042}
 \definecolor{gray-1}{HTML}{6D6E71}
 \definecolor{gray-2}{HTML}{58595B}
+\definecolor{gray-3}{HTML}{414042}
 
 \thispagestyle{empty}
 
@@ -69,28 +69,35 @@
 % Parameter #2 - Last name
 \newcommand{\name}[2]
 {
-  \def \personname{\lowercase{{\bf#1} \textcolor{gray-2}{#2}}}
+  \def \personname {\lowercase{{\bf#1} \textcolor{gray-2}{#2}}}
 }
 
 % Parameter #1 - Year of study
 % Parameter #2 - Major
 \newcommand{\academiclvl}[2]
 {
-  \def \academiclevel{\lowercase{\textcolor{gray-2}{#1 in} #2}}
+  \def \academiclevel {\lowercase{\textcolor{gray-2}{#1 in} #2}}
 }
 
 % Parameter #1 - Email/Directory ID
 % Parameter #2 - Domain
 \newcommand{\email}[2]
 {
-  \def \emailaddress{#1\textcolor{gray-2}{@#2}}
+  \def \emailaddress {#1\textcolor{gray-2}{@#2}}
 }
 
 % Parameter #1 - Domain
 % Parameter #2 - Subdirectory and parameters
 \newcommand{\website}[2]
 {
-  \def \websiteurl{\textcolor{gray-2}{#1/}#2}
+  \def \websiteurl {\textcolor{gray-2}{#1/}#2}
+}
+
+% Parameter #1 - Country Code
+% Parameter #2 - Phone Number
+\newcommand{\phone}[2]
+{
+  \def \phonenumber{\textcolor{gray-2}{#1} {#2}}
 }
 
 \newcommand{\printheader}
@@ -133,7 +140,6 @@
 % ------------------------------------------------------------------------------
 % Helper Functions
 % ------------------------------------------------------------------------------
-
 % Parameter #1 - Title
 % Parameter #2 - Dates
 \newcommand{\contenttable}[2]
@@ -151,6 +157,8 @@
   \end{center}
 }
 
+% Parameter #1 - Skill Category
+% Parameter #2 - Particular Skills
 \newcommand{\skill}[2]
 {
   \setlength{\parskip}{0pt}
@@ -171,7 +179,6 @@
 % ------------------------------------------------------------------------------
 % Section Definition
 % ------------------------------------------------------------------------------
-
 % Parameter #1 - Section Title
 \renewenvironment{section}[1]
 {
@@ -181,7 +188,6 @@
 % ------------------------------------------------------------------------------
 % Sub-Section Definitions
 % ------------------------------------------------------------------------------
-
 % Parameter #1 - Degree and Major
 % Parameter #2 - School/University
 % Parameter #3 - Dates
@@ -236,7 +242,7 @@
   }
   
   \setlength{\parskip}{0pt}
-  \contenttable{\ifblank{#3}{#1 \textcolor{gray-2}{at #2}}{#1 \textcolor{gray-2}{at #2, #3}}}{#4}   %[4]
+  \contenttable{\worktitle}{#4}   %[4]
   \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
@@ -244,13 +250,15 @@
     \setlength{\topsep}{4pt}
     \setlength{\parsep}{2pt}
     \normalsize
-    % \color{gray-3}
   }
 }
 {
   \end{list}
 }
 
+% Parameter #1 - Project Title
+% Parameter #2 - Project Type
+% Parameter #3 - Dates
 \newenvironment{project}[3]
 {
   \let \projecttitle \relax
