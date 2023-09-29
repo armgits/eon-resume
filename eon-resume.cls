@@ -92,13 +92,6 @@
 {
   \def \websiteurl{\textcolor{gray-2}{#1/}#2}
 }
- 
-% Parameter #1 - Country Code
-% Parameter #2 - Phone Number
-\newcommand{\phone}[2]
-{
-  \def \phonenumber{\textcolor{gray-2}{#1} #2}
-}
 
 \newcommand{\printheader}
 {
@@ -158,8 +151,6 @@
   \end{center}
 }
 
-% Parameter #1 - Skill Category
-% Parameter #2 - Specific Skills
 \newcommand{\skill}[2]
 {
   \setlength{\parskip}{0pt}
@@ -245,7 +236,7 @@
   }
   
   \setlength{\parskip}{0pt}
-  \contenttable{\worktitle}{#4}   %[4]
+  \contenttable{\ifblank{#3}{#1 \textcolor{gray-2}{at #2}}{#1 \textcolor{gray-2}{at #2, #3}}}{#4}   %[4]
   \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
@@ -272,7 +263,7 @@
   }
 
   \setlength{\parskip}{0pt}
-  \contenttable{\projecttitle}{#3}   %[4]
+  \contenttable{\ifblank{#2}{#1}{#1 \textcolor{gray-2}{as #2}}}{#3}   %[4]
   \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
