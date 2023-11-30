@@ -51,6 +51,8 @@
 ]
 
 % Spacing between resume sections
+\setlength{\parskip}{4pt}
+
 % Font colors
 \definecolor{gray-1}{HTML}{6D6E71}
 \definecolor{gray-2}{HTML}{58595B}
