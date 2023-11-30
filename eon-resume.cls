@@ -30,13 +30,14 @@
 % ------------------------------------------------------------------------------
 % Design Rules and Document Style
 % ------------------------------------------------------------------------------
+% Paper and margin sizes
 \geometry
 {
-  a4paper,
-  left = 1.27cm,
-  right = 1.27cm,
-  top = 1.27cm,
-  bottom = 1.27cm
+  letterpaper,
+  left = 1cm,
+  right = 1cm,
+  top = 1cm,
+  bottom = 1cm
 }
 
 \setmainfont{D-DIN}
