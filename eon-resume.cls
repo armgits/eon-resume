@@ -40,6 +40,7 @@
   bottom = 1cm
 }
 
+% Typeface
 \setmainfont{D-DIN}
 [
   Path = ./font/d-din/,
@@ -49,10 +50,13 @@
   ItalicFont = D-DIN-Italic
 ]
 
+% Spacing between resume sections
+% Font colors
 \definecolor{gray-1}{HTML}{6D6E71}
 \definecolor{gray-2}{HTML}{58595B}
 \definecolor{gray-3}{HTML}{414042}
 
+% Disables page numbers at the bottom
 \thispagestyle{empty}
 
 % ------------------------------------------------------------------------------
