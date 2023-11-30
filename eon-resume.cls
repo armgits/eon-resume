@@ -70,8 +70,6 @@
 \let \websiteurl \relax
 \let \phonenumber \relax
 
-\setlength{\parskip}{6pt}
-
 % Parameter #1 - First name
 % Parameter #2 - Last name
 \newcommand{\name}[2]
