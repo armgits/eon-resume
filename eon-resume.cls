@@ -171,8 +171,8 @@
   \begin{tabularx}{\textwidth\normalsize}
   % table layout
   { 
-    @{}>{\raggedright\arraybackslash\hsize=.4\hsize\linewidth=\hsize}X
-    >{\raggedright\arraybackslash\hsize=1.6\hsize\linewidth=\hsize}X
+    @{}>{\raggedright\arraybackslash\hsize=.5\hsize\linewidth=\hsize}X
+    >{\raggedright\arraybackslash\hsize=1.5\hsize\linewidth=\hsize}X
   }
     % table content
     #1 & \textcolor{gray-3}{#2}
