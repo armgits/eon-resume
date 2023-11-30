@@ -207,7 +207,7 @@
     \setlength{\topsep}{4pt}
     \setlength{\parsep}{2pt}
     \normalsize
-    % \color{gray-3}
+    \color{gray-3}
   }
 }
 {
