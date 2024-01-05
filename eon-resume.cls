@@ -1,9 +1,9 @@
 % Eon Resume by Abhishekh Reddy (helloarm@pm.me)
-% 
+%
 % A modern-looking tech resume
-% HUGE Inspiration from: Dheera Venkatraman's resume https://dheera.net/about 
+% HUGE Inspiration from: Dheera Venkatraman's resume https://dheera.net/about
 % and Microsoft's Metro UI
-% 
+%
 % Repository: https://github.com/armgits/eon-resume
 % License and terms of use: TBD
 
@@ -170,7 +170,7 @@
   \begin{center}
   \begin{tabularx}{\textwidth\normalsize}
   % table layout
-  { 
+  {
     @{}>{\raggedright\arraybackslash\hsize=.5\hsize\linewidth=\hsize}X
     >{\raggedright\arraybackslash\hsize=1.5\hsize\linewidth=\hsize}X
   }
@@ -204,7 +204,7 @@
   {
     \setlength{\parskip}{0pt}
     \setlength{\leftmargin}{0pt}
-    \setlength{\topsep}{4pt}
+    \setlength{\topsep}{2pt}
     \setlength{\parsep}{2pt}
     \normalsize
     \color{gray-3}
@@ -245,7 +245,7 @@
     % false
     \def \worktitle {#1 \textcolor{gray-2}{at #2, #3}}
   }
-  
+
   \setlength{\parskip}{0pt}
   \contenttable{\worktitle}{#4}   %[4]
   \begin{list}{\char"2022}
