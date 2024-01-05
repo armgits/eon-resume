@@ -66,4 +66,6 @@
   "editor.rulers": [
     80
   ],
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
 }
