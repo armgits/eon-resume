@@ -25,7 +25,7 @@
         "lualatexmk"
       ]
     },
-    
+
     {
       "name": "pdflatex -> bibtex -> pdflatex * 2",
       "tools": [
@@ -62,5 +62,10 @@
         "tectonic"
       ]
     }
-  ]
+  ],
+  "editor.rulers": [
+    80
+  ],
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
 }
