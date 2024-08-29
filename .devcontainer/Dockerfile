@@ -12,6 +12,7 @@ RUN apk update && apk add --no-cache \
   git \
   texlive \
   texlive-xetex \
+  qpdf
 
 # always run the container as the non-root user
 USER $USER_NAME
