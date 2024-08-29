@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.19
 
 # add a non-root user
 ARG USER_NAME=latex-workspace
