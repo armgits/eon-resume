@@ -77,7 +77,8 @@
 % Resume Header
 % ------------------------------------------------------------------------------
 \let \personname \relax
-\let \academiclevel \relax
+\let \academiclvl \relax
+\let \cstmtagline \relax
 \let \emailaddress \relax
 \let \websiteurl \relax
 \let \phonenumber \relax
@@ -93,7 +94,15 @@
 % Parameter #2 - Major
 \newcommand{\academiclvl}[2]
 {
-  \def \academiclevel {\lowercase{\textcolor{gray-2}{#1 in} #2}}
+  \def \academiclvl {\lowercase{\textcolor{gray-2}{#1 in} #2}}
+}
+
+% Parameter #1 - First field
+% Parameter #2 - Highlight
+% Parameter #3 - Second field
+\newcommand{\customtagline}[3]
+{
+  \def \cstmtagline {\lowercase{\textcolor{gray-2}{#1} #2 \textcolor{gray-2}{#3}}}
 }
 
 % Parameter #1 - Email/Directory ID
@@ -128,6 +137,15 @@
     \def \contactinfo {\phonenumber}
   }
 
+  \let \tagline \relax
+  \ifundef{\cstmtagline} {
+    % true
+    \def \tagline {\academiclvl}
+  } {
+    % false
+    \def \tagline {\cstmtagline}
+  }
+
   \begingroup
   \renewcommand{\arraystretch}{1.25}
   \begin{center}
@@ -139,7 +157,7 @@
   }
   % table content
   \huge\personname & \Large\emailaddress \\
-  \Large\academiclevel & \Large\contactinfo
+  \Large\tagline & \Large\contactinfo
   \end{tabularx}
   \end{center}
   \endgroup
