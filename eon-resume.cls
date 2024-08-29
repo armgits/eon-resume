@@ -26,6 +26,7 @@
 \RequirePackage[parfill]{parskip}
 \RequirePackage{fontspec}
 \RequirePackage{xcolor}
+\RequirePackage{hyperref}
 
 % ------------------------------------------------------------------------------
 % Design Rules and Document Style
@@ -60,6 +61,17 @@
 
 % Disables page numbers at the bottom
 \thispagestyle{empty}
+
+% Hyperlinks settings
+\hypersetup
+{
+  colorlinks=true,
+  linkcolor=gray-2,
+  filecolor=magenta,
+  urlcolor=gray-2,
+  pdftitle={Abhishekh Reddy Munnangi},
+  urlbordercolor=1 1 0
+}
 
 % ------------------------------------------------------------------------------
 % Resume Header
