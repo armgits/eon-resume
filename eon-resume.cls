@@ -92,7 +92,7 @@
 
 % Parameter #1 - Year of study
 % Parameter #2 - Major
-\newcommand{\academiclvl}[2]
+\newcommand{\academiclevel}[2]
 {
   \def \academiclvl {\lowercase{\textcolor{gray-2}{#1 in} #2}}
 }
