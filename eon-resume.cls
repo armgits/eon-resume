@@ -276,19 +276,29 @@
 % Parameter #1 - Project Title
 % Parameter #2 - Project Type
 % Parameter #3 - Dates
-\newenvironment{project}[3]
+% Parameter #4 - Project Link
+\newenvironment{project}[4]
 {
+  \let \projectname \relax
   \let \projecttitle \relax
+
+  \ifblank{#4} {
+    % true
+    \def \projectname { #1 }
+  } {
+    \def \projectname { \href{#4}{\textcolor{black}{#1}} }
+  }
+
   \ifblank{#2} {
     % true
-    \def \projecttitle {#1}
+    \def \projecttitle {\projectname}
   } {
     % false
-    \def \projecttitle {#1 \textcolor{gray-2}{as #2}}
+    \def \projecttitle {\projectname \textcolor{gray-2}{as #2}}
   }
 
   \setlength{\parskip}{0pt}
-  \contenttable{\ifblank{#2}{#1}{#1 \textcolor{gray-2}{as #2}}}{#3}   %[4]
+  \contenttable{\projecttitle}{#3}   %[4]
   \begin{list}{\char"2022}
   {
     \setlength{\parskip}{0pt}
