@@ -109,14 +109,17 @@
 % Parameter #2 - Domain
 \newcommand{\email}[2]
 {
-  \def \emailaddress {#1\textcolor{gray-2}{@#2}}
+  \def \emailaddress {
+    \href{mailto:#1@#2}{\textcolor{black}{#1}\textcolor{gray-2}{@#2}}
+  }
 }
 
 % Parameter #1 - Domain
 % Parameter #2 - Subdirectory and parameters
 \newcommand{\website}[2]
 {
-  \def \websiteurl {\textcolor{gray-2}{#1/}#2}
+  \def \websiteurl {
+    \href{https://#1/#2}{\textcolor{gray-2}{#1/}\textcolor{black}{#2}}}
 }
 
 % Parameter #1 - Country Code
