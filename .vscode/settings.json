@@ -71,4 +71,5 @@
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
   "files.autoSave": "afterDelay",
+  "terminal.integrated.enablePersistentSessions": false
 }
