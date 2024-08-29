@@ -9,6 +9,11 @@
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
 		"vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "ash",
+        "terminal.integrated.profiles.linux": { "ash": { "path": "/bin/ash" } },
+        "git.enableCommitSigning": true
+      },
 			"extensions": [
 				"James-Yu.latex-workshop"
 			]
