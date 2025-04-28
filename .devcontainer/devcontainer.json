@@ -1,17 +1,24 @@
 {
-	"dockerFile": "Dockerfile",
+	"image": "armdocks/eon-resume",
 	"workspaceMount": "source=${localEnv:HOME}/resume,target=/home/latex-workspace/resume,type=bind",
 	"workspaceFolder": "/home/latex-workspace/resume",
-	"runArgs": [
+
+  "runArgs": [
+    "--name", "${localWorkspaceFolderBasename}",
+    "--rm",
 		"--network=host",
 		"--ipc=host"
 	],
+
+  "updateRemoteUserUID": false,
+  "postCreateCommand": "ash .devcontainer/packages_install.sh",
+
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
 		"vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "ash",
         "terminal.integrated.profiles.linux": { "ash": { "path": "/bin/ash" } },
+        "terminal.integrated.defaultProfile.linux": "ash",
         "git.enableCommitSigning": true
       },
 			"extensions": [

@@ -20,7 +20,7 @@ installer()
       if [ ! -d ~/texmf/doc/"${directory_name}" ]; then
         mkdir -p ~/texmf/doc/"${directory_name}"
       fi
-      
+
       mv "${filename}" ~/texmf/doc/"${package_directory}"
     fi
   done
@@ -42,12 +42,12 @@ for package_directory in */; do
 
   directory_name="${package_directory%/}"
 
-  if [ -f "${directory_name}".ins ]; then  
+  if [ -f "${directory_name}".ins ]; then
     latex "${directory_name}".ins
   fi
-  
+
   mkdir -p ~/texmf/tex/latex/"${directory_name}"
-    
+
   # if [ -f "${directory_name}".cls ]; then
   #   mv "${directory_name}".cls ~/texmf/tex/latex/"${package_directory}"
   # fi
@@ -55,12 +55,12 @@ for package_directory in */; do
   # if [ -f "${directory_name}".sty ]; then
   #   mv "${directory_name}".sty ~/texmf/tex/latex/"${package_directory}"
   # fi
-    
+
   # if [ -f "${directory_name}".pdf ]; then
   #   mkdir -p ~/texmf/doc/"${directory_name}"
   #   mv "${directory_name}".pdf ~/texmf/doc/"${package_directory}"
   # fi
-  
+
   installer
 
   cd ..
@@ -68,4 +68,4 @@ done
 
 rm -r ~/tmp
 
-  
+printf "\nLatex packages installed, workspace is ready!\n"
